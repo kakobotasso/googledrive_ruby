@@ -8,7 +8,15 @@ puts "Password: "
 password = gets
 session = GoogleDrive.login(email, password)
 
-ws = session.spreadsheet_by_key("0AhR2tTuGJQUwdER5bHAzaWJvY2hFay1EbU1SNHhUeEE").worksheets[0]
+ss = session.spreadsheet_by_title("SCRUM")
+ws = ss.worksheet_by_title("Sheet1")
+
+p ws.num_rows
+p ws.num_cols
+
+ws.rows.each do |row|
+	p row
+end
 
 #Writting on cells
 #ws[2,1] = "It"
@@ -17,4 +25,4 @@ ws = session.spreadsheet_by_key("0AhR2tTuGJQUwdER5bHAzaWJvY2hFay1EbU1SNHhUeEE").
 #ws.reload
 
 # Print value of cells
-puts ws[2,1] +  ws[2,2]
+#puts ws[2,1] +  ws[2,2]
